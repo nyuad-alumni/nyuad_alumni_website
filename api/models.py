@@ -76,7 +76,7 @@ class User(models.Model):
 		except Exception as e:
 			return {}
 
-	def __str__(self):              # __unicode__ on Python 2
+	def __str__(self):
 		return "User %s %s. Netid %s" % (self.first_name, self.last_name, self.net_id)
  
 
