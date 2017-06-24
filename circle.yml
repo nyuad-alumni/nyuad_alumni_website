@@ -18,8 +18,9 @@ machine:
 dependencies:
     pre:
         - docker info
+        - pip install docker-compose==1.10.0
 
-# Running tests 'inside' container
+#Running tests 'inside' container
 test:
     override:
         - docker-compose run web python manage.py test
