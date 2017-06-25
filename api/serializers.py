@@ -39,7 +39,6 @@ class StudyAbroadSiteSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
 	city = CitySerializer()
-	country = CountrySerializer()
 	company = CompanySerializer()
 	majors = MajorSerializer()
 	study_abroads = StudyAbroadSiteSerializer()

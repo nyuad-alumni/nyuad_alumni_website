@@ -54,17 +54,20 @@ class User(models.Model):
 	city = models.ForeignKey(
 		City, 
 		on_delete=models.SET_NULL,
-		null=True
+		null=True,
+		related_name='users'
 	)
 	company = models.ForeignKey(
 		Company,
 		on_delete=models.SET_NULL,
-		null=True
+		null=True,
+		related_name='users'
 	)
 	school = models.ForeignKey(
 		School,
 		on_delete=models.SET_NULL,
-		null=True
+		null=True,
+		related_name='users'
 	)
 	majors = models.ManyToManyField(Major)
 	study_abroads = models.ManyToManyField(StudyAbroadSite)
