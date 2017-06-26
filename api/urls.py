@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
 	url(
-		r'^api/v1/users/(?P<id>[0-9]+)$',
+		r'^api/v1/users/(?P<id>[0-9A-Za-z]+)$',
 		views.get_delete_update_user,
 		name='get_delete_update_user'
 	),

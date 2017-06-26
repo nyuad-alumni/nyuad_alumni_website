@@ -12,14 +12,16 @@ from .serializers import CitySerializer, CompanySerializer, MajorSerializer,\
 def get_delete_update_user(request, id):
 	try:
 		user = User.objects.get(pk=id)
-	except User.DoesNotExist:
+	except Exception:
 		try:
 			user = User.objects.get(net_id=id)
+
 		except User.DoesNotExist:
 			return Response(status=status.HTTP_404_NOT_FOUND)
 
 	if request.method == 'GET':
-		return Response({})
+		serializer = UserSerializer(user)
+		return Response(serializer.data)
 
 	elif request.method == 'DELETE':
 		return Response({})
@@ -34,8 +36,29 @@ def get_post_users(request):
 		serializer = UserSerializer(users, many=True)
 		
 		return Response(serializer.data)
-	else:
-		return Response({})
+	if request.method == 'POST':
+		data = {
+			'net_id' : request.data.get('net_id'),
+			'first_name' : request.data.get('first_name'),
+			'last_name' : request.data.get('last_name'),
+			'graduation_year' : request.data.get('graduation_year'),
+			'social_networks' : request.data.get('social_networks'),
+			'preferred_email' : request.data.get('preferred_email'),
+			'city' : request.data.get('city'), 
+			'company' : request.data.get('company'),  
+			'school' : request.data.get('school'),  
+			'majors' : request.data.get('majors'), 
+			'study_abroad_sites' : request.data.get('study_abroad_sites'), 
+			'preprofessional_tracks' : request.data.get('preprofessional_tracks'), 
+		}
+
+		serializer = UserSerializer(data=data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+			
 
 @api_view(['GET'])
 def get_cities(request):

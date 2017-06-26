@@ -2,11 +2,11 @@ from django.db import models
 import json
 
 class City(models.Model):
-	country = models.CharField(max_length=60)
+	country = models.CharField(max_length=60, null=True)
 	city = models.CharField(max_length=60)
-	region = models.CharField(max_length=60)
-	latitude = models.CharField(max_length=60)
-	longitude = models.CharField(max_length=60) 
+	region = models.CharField(max_length=60, null=True)
+	latitude = models.CharField(max_length=60, null=True)
+	longitude = models.CharField(max_length=60, null=True) 
 
 	def __str__(self):     
 		return "City %s " % self.city
@@ -70,7 +70,7 @@ class User(models.Model):
 		related_name='users'
 	)
 	majors = models.ManyToManyField(Major)
-	study_abroads = models.ManyToManyField(StudyAbroadSite)
+	study_abroad_sites = models.ManyToManyField(StudyAbroadSite)
 	preprofessional_tracks = models.ManyToManyField(PreProfessionalTrack)
 
 	def get_social_networks_links(self):
