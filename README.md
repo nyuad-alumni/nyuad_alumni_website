@@ -10,6 +10,14 @@ If this is the first time you are using Github, you should set up your two-facto
 
 You have to clone the git repository to have access to and be able to commit to the repository. To do this, go to the nyuad_alumni_website repository, and click the 'Clone or download' button at the top right. Copy the url to your clipboard. After you do this, go to your command line, and type `git clone (what you copied)`. Now, you should be set up with the repository on your local machine.
 
+Once you have downloaded the github repository, you should be able to open the repository on your local machine and have access to the files.
+
+To learn how to use github (make contributions and commits to the repository),
+`https://www.youtube.com/watch?v=0fKg7e37bQE`
+check out this link.
+
+Be careful not to merge to master before you have approval of someone.
+
 ## RUN THE PROJECT
 * From the project root run	`docker-compose up` and the site will be up and running on `http://localhost:8000/`
 
